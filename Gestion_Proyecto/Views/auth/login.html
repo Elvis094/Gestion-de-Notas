@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Gestión Estudiantil</title>
+    <link rel="stylesheet" href="/Static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-card">
+            <h1>Iniciar Sesión</h1>
+            
+            {% with messages = get_flashed_messages(with_categories=true, category_filter=["error"]) %}
+                {% if messages %}
+                    <div class="alert-danger">
+                        {% for category, message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <!-- Formulario para usuarios normales -->
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" name="contraseña" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn">Ingresar</button>
+                
+                <div class="text-center mt-3">
+                    <a href="#" class="link">¿Olvidaste tu contraseña?</a>
+                </div>
+                
+                <div class="toggle-form">
+                    ¿No tienes una cuenta? <a href="{{ url_for('register') }}" class="link">Regístrate</a>
+                </div>
+            </form>
+
+            <!-- Botón para administradores -->
+            <h2>Acceso para Administradores</h2>
+            <div class="form-group">
+                <a href="/admin/login" class="btn">Iniciar como Administrador</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

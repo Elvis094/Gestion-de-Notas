@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Profesor</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Bienvenido, {{ usuario['nombre'] }}</h1>
+    <p>Este es el dashboard del profesor.</p>
+    <ul>
+        <li><a href="/profesor/asignar-notas">Asignar Notas</a></li>
+        <li><a href="/logout">Cerrar Sesión</a></li>
+    </ul>
+</body>
+</html>
